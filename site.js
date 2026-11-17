@@ -13,11 +13,6 @@ function link(label, url) {
 
 function renderList(id, items, render) {
   const container = document.getElementById(id);
-  if (!items.length) {
-    container.closest("section").hidden = true;
-    document.querySelector('nav a[href="#' + container.closest("section").id + '"]').hidden = true;
-    return;
-  }
   container.append(...items.map(render));
 }
 
@@ -38,6 +33,15 @@ renderList("research-list", teamSite.research, (item) => {
   card.append(element("h3", "", item.title), element("p", "", item.description));
   if (item.url) card.append(link("了解" + item.title + " ↗", item.url));
   return card;
+});
+
+document.getElementById("project-title").textContent = teamSite.project.title;
+document.getElementById("project-description").textContent = teamSite.project.description;
+document.getElementById("project-example").textContent = teamSite.project.example;
+renderList("project-steps", teamSite.project.steps, (step) => {
+  const item = element("li");
+  item.append(element("h4", "", step.title), element("p", "", step.description));
+  return item;
 });
 
 renderList("work-list", teamSite.work, (item) => {
@@ -66,6 +70,8 @@ renderList("people-list", teamSite.people, (person) => {
   if (person.url) card.append(link(person.name + "的个人主页 ↗", person.url));
   return card;
 });
+
+document.getElementById("people-empty").hidden = teamSite.people.length > 0;
 
 document.getElementById("contact-copy").textContent = teamSite.contact.text;
 if (teamSite.contact.email) {

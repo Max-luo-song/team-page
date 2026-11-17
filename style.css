@@ -17,7 +17,7 @@ body { margin: 0; background: var(--paper); color: var(--ink); line-height: 1.7;
 a { color: inherit; }
 a:focus-visible { outline: 2px solid #43896e; outline-offset: 5px; }
 img { display: block; width: 100%; height: 100%; object-fit: cover; }
-p, h1, h2, h3 { margin: 0; }
+p, h1, h2, h3, h4 { margin: 0; }
 section { scroll-margin-top: 100px; }
 .wrap { width: min(1192px, calc(100% - 80px)); margin-inline: auto; }
 .skip { position: fixed; top: 8px; left: 8px; transform: translateY(-200%); background: white; padding: 8px 16px; z-index: 10; }
@@ -44,9 +44,20 @@ h1 { font-size: clamp(36px, 5vw, 69px); line-height: 1.15; letter-spacing: -.065
 h2 { font-size: clamp(29px, 4vw, 50px); line-height: 1.2; letter-spacing: -.045em; }
 h3 { font-size: clamp(19px, 2vw, 24px); line-height: 1.35; }
 .research-grid, .people-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 26px; }
+.research-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .research-card { border-top: 2px solid var(--green); padding: 22px 0 0; }
 .research-card p, .person p, .work-row p { margin-top: 9px; color: var(--muted); }
 .tinted { background: #eaf0e9; }
+#project-title { font-size: clamp(27px, 4vw, 43px); letter-spacing: -.035em; }
+#project-description { max-width: 68ch; margin-top: 12px; }
+#project-steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); padding-left: 0; gap: 18px; margin: 26px 0; list-style-position: inside; }
+#project-steps li { border-top: 1px solid #9bb5a3; padding-block: 13px; }
+#project-steps li::marker { color: var(--green); font-weight: 700; }
+#project-steps h4 { display: inline; margin-left: 4px; }
+#project-steps p { color: var(--muted); font-size: 14px; margin-top: 8px; }
+#project-example { border-left: 3px solid #9bb5a3; padding-left: 15px; color: var(--muted); }
+#work-list:not(:empty) { margin-top: 34px; }
+#people-empty { color: var(--muted); }
 .work-row { display: grid; grid-template-columns: minmax(140px, 1fr) 3fr; align-items: baseline; gap: 24px; padding-block: 22px; border-top: 1px solid #bdcfc0; }
 .work-row:last-child { border-bottom: 1px solid #bdcfc0; }
 .work-row .work-type, .person .role { color: var(--green); font-size: 14px; font-weight: 700; margin-top: 0; }
@@ -65,12 +76,12 @@ p + .inline-link { margin-top: 10px; }
   .wrap { width: calc(100% - 40px); }
   .hero { grid-template-columns: 1fr; margin-top: 20px; }
   .hero-art { min-height: 0; aspect-ratio: 2 / 1; }
-  .research-grid, .people-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .research-grid, .people-grid, #project-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 520px) {
   .nav { flex-wrap: wrap; justify-content: flex-start; gap: 8px 16px; padding-block: 12px; }
   nav { flex-basis: 100%; }
-  .research-grid, .people-grid, .work-row { grid-template-columns: 1fr; }
+  .research-grid, .people-grid, .work-row, #project-steps { grid-template-columns: 1fr; }
   .work-row { gap: 5px; }
   .portrait { aspect-ratio: 16 / 10; }
 }
