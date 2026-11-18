@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Universe Lab 研究从有限观测重建三维世界，以及基于场景模型的数据生成、决策推演与智能体自主规划。">
   <title>Universe Lab</title>
-  <link rel="stylesheet" href="./style.css?v=20261118-visual">
-  <script defer src="./content.js?v=20261118-visual"></script>
-  <script defer src="./site.js?v=20261118-visual"></script>
+  <link rel="stylesheet" href="./style.css?v=20261118-carousel">
+  <script defer src="./content.js?v=20261118-carousel"></script>
+  <script defer src="./site.js?v=20261118-carousel"></script>
 </head>
 <body>
   <a class="skip" href="#main">跳到正文</a>
@@ -27,7 +27,15 @@
         <p id="intro" class="intro"></p>
         <a class="button" href="#research">探索我们的研究 <span aria-hidden="true">↘</span></a></div>
       </div>
-      <div id="hero-art" class="hero-art" aria-hidden="true"></div>
+      <section id="hero-art" class="hero-art" aria-label="研究图片" aria-roledescription="轮播">
+        <div id="hero-track" class="hero-track" tabindex="0" aria-label="研究图片，左右滑动查看"></div>
+        <div id="hero-controls" class="hero-controls" hidden>
+          <button id="hero-previous" class="carousel-button" type="button" aria-label="上一张图片">←</button>
+          <div id="hero-dots" class="hero-dots" aria-label="选择图片"></div>
+          <button id="hero-next" class="carousel-button" type="button" aria-label="下一张图片">→</button>
+          <button id="hero-play" class="carousel-button" type="button" aria-label="暂停自动播放">Ⅱ</button>
+        </div>
+      </section>
     </section>
     <section class="vision wrap" aria-labelledby="vision-title">
       <h2 id="vision-title">以世界模型理解环境<br>在交互中学习行动</h2>
