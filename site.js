@@ -20,6 +20,7 @@ document.title = teamSite.name;
 document.querySelectorAll("[data-name]").forEach((node) => { node.textContent = teamSite.name; });
 document.getElementById("headline").textContent = teamSite.headline;
 document.getElementById("intro").textContent = teamSite.intro;
+document.getElementById("vision-copy").textContent = teamSite.vision;
 if (teamSite.heroImage) {
   const image = element("img");
   image.alt = "";
@@ -66,7 +67,16 @@ renderList("people-list", teamSite.people, (person) => {
     image.addEventListener("error", () => image.remove());
     portrait.append(image);
   }
-  card.append(portrait, element("h3", "", person.name), element("p", "role", person.role), element("p", "", person.bio));
+  card.append(portrait, element("h3", "", person.name));
+  const details = element("dl", "person-details");
+  details.append(
+    element("dt", "", "研究方向"),
+    element("dd", "", person.research || "待补充"),
+    element("dt", "", "当前状态"),
+    element("dd", "", person.status || "待补充"),
+  );
+  card.append(details);
+  if (person.bio) card.append(element("p", "", person.bio));
   if (person.url) card.append(link(person.name + "的个人主页 ↗", person.url));
   return card;
 });
@@ -80,3 +90,10 @@ if (teamSite.contact.email) {
   contact.hidden = false;
 }
 if (!teamSite.research.length) document.querySelector(".hero a").hidden = true;
+
+document.getElementById("about-copy").textContent = teamSite.about;
+renderList("practices-list", teamSite.practices, (practice) => {
+  const item = element("article");
+  item.append(element("h3", "", practice.title), element("p", "", practice.description));
+  return item;
+});
